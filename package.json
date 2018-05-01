@@ -1,20 +1,20 @@
 {
   "name": "project1",
   "version": "1.0.0",
-  "description": "test application for smart contracts",
-  "main": "index.js",
+  "description": "",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
   "scripts": {
-    "test": "run"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mattehicks/CoinSandbox.git"
   },
-  "keywords": [
-    "test",
-    "blockchain"
-  ],
-  "author": "Matt Hicks",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/mattehicks/CoinSandbox/issues"
