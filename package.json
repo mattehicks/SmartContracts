@@ -1,0 +1,23 @@
+{
+  "name": "project1",
+  "version": "1.0.0",
+  "description": "test application for smart contracts",
+  "main": "index.js",
+  "scripts": {
+    "test": "run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattehicks/CoinSandbox.git"
+  },
+  "keywords": [
+    "test",
+    "blockchain"
+  ],
+  "author": "Matt Hicks",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattehicks/CoinSandbox/issues"
+  },
+  "homepage": "https://github.com/mattehicks/CoinSandbox#readme"
+}
