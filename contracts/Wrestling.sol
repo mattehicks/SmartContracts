@@ -43,7 +43,7 @@ contract Wrestling {
 
         wrestler2 = msg.sender;
 
-        WrestlingStartsEvent(wrestler1, wrestler2);
+        emit WrestlingStartsEvent(wrestler1, wrestler2);
     }
 
     /**
