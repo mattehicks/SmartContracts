@@ -1,7 +1,7 @@
 
-chaindata/
-dist/
-node_modules/
+chaindata/**
+dist/**
+node_modules/**
 package.json
 package-lock.json
 webpack.config.js
