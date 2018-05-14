@@ -1,0 +1,8 @@
+
+./chaindata
+./dist
+./node_modules
+./package.json
+./package-lock.json
+./test
+./webpack.config.js
