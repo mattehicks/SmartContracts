@@ -1,21 +1,31 @@
 pragma solidity ^0.4.23;
 
-contract Escrow{
+contract EscrowToken{
 
     mapping (address => uint) balances;
 
+    address contract_owner;
     address public seller;
     address public buyer;
-    address escrow = msg.sender;
     bool sellerApprove;
     bool buyerApprove;
     string public sellername;
     string public broker;
     uint256 public created;
 
+    TokenCreator creator;
+    address owner;
+    bytes32 name;
+
     event escrowEvent1(address seller, address buyer);
     event verify(string message);
 
+    constructor(bytes32 _name) public {
+        contract_owner = msg.sender;
+        //Returns the address of a new token
+        creator = TokenCreator(msg.sender);
+        name = _name;
+    }
 
     function start(string name) returns (string){
         sellername = name;
@@ -34,6 +44,13 @@ contract Escrow{
 
         //todo add date
         emit escrowEvent1(seller, buyer);
+    }
+
+    function transfer(address newOwner) public {
+        // Only the current owner can transfer the token.
+        if (msg.sender != owner) return;
+        if (creator.isTokenTransferOK(owner, newOwner))
+            owner = newOwner;
     }
 
     function approve(){
@@ -72,4 +89,29 @@ contract Escrow{
         payOut();
     }
 
+}
+
+contract TokenCreator {
+    function createToken(bytes32 name)
+    public
+    returns (EscrowToken tokenAddress)
+    {
+        return new EscrowToken(name);
+    }
+
+    function changeName(EscrowToken tokenAddress, bytes32 name)  public {
+        // Again, the external type of `tokenAddress` is
+        // simply `address`.
+        tokenAddress.changeName(name);
+    }
+
+    function isTokenTransferOK(address currentOwner, address newOwner)
+    public
+    view
+    returns (bool ok)
+    {
+        // Check some arbitrary condition.
+        address tokenAddress = msg.sender;
+        return (keccak256(newOwner) & 0xff) == (bytes20(tokenAddress) & 0xff);
+    }
 }
